@@ -1,28 +1,25 @@
-import { StyleSheet } from "react-native";
-import { Button, useTheme } from "react-native-paper";
+import { StyleSheet, ViewStyle } from "react-native";
+import { Button, useTheme, ButtonProps } from "react-native-paper";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
-const PageButton = () => {
-  const theme = useTheme()
-  const navigation = useNavigation()
+const PageButton: React.FC<ButtonProps> = ({icon, ...props }) => {
+  const theme = useTheme();
+  const navigation = useNavigation();
 
   return (
     <Button
-      icon="plus"
+      icon={icon}
       mode="contained"
-      contentStyle={{backgroundColor: theme.colors.secondary}}
-      labelStyle={{color: theme.colors.primary}}
       onPress={() => {
         navigation.navigate("CreateTask");
       }}
-    />
+    >
+      {props.children}
+    </Button>
   );
 };
 
 export default PageButton;
 
-const styles = StyleSheet.create({
-    
-});
+const styles = StyleSheet.create({});

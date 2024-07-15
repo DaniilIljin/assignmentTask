@@ -1,5 +1,5 @@
 interface ITask {
-    name: string,
-    isCompleted: boolean
-    description: string
+    name: string;
+    isCompleted: boolean;
+    description: string;
 }

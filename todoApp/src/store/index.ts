@@ -3,17 +3,23 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 interface IGLobalStore {
-  tasks: ITask[];
+    tasks: ITask[];
 }
 
-const useGlobalStore = create<IGLobalStore>()(
-  persist(
-    (set, get) => ({
-      tasks: [],
-    }),
-    {
-      name: "todo-store",
-      storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+export const useGlobalStore = create<IGLobalStore>()(
+    persist(
+        (set, get) => ({
+            tasks: [
+                {
+                    name: "first task",
+                    isCompleted: false,
+                    description: "please finish this. :)",
+                },
+            ],
+        }),
+        {
+            name: "todo-store",
+            storage: createJSONStorage(() => AsyncStorage),
+        }
+    )
 );
