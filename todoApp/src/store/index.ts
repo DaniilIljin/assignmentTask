@@ -4,6 +4,9 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 interface IGLobalStore {
     tasks: ITask[];
+    addTask: (task: ITask) => void;
+    selectedTask: null | ITask;
+    updateSelectedTask: (task: ITask) => void;
 }
 
 export const useGlobalStore = create<IGLobalStore>()(
@@ -16,6 +19,18 @@ export const useGlobalStore = create<IGLobalStore>()(
                     description: "please finish this. :)",
                 },
             ],
+            selectedTask: null,
+
+            addTask: (task) => {
+                const { tasks } = get();
+                const updatedTasks = [...tasks, task];
+                set({ tasks: updatedTasks });
+            },
+            updateSelectedTask: (task) => {
+                set({
+                    selectedTask: task,
+                });
+            },
         }),
         {
             name: "todo-store",
