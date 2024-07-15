@@ -25,7 +25,7 @@ const CreateTask: React.FC = () => {
             <Card style={styles.card}>
                 <Card.Content>
                     <Title>Create a New Task</Title>
-                    <TextInput label="Name" value={selectedTask ? } onChangeText={(text) => setName(text)} style={styles.input} />
+                    <TextInput label="Name" value={name} onChangeText={(text) => setName(text)} style={styles.input} />
                     <TextInput
                         label="Description"
                         value={description}
